@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>임상의사결정 - 물리치료학과</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', 'Segoe UI', Arial, sans-serif;
+            background: #f7f8fa;
+            color: #23233b;
+        }
+        .navbar {
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(90,79,207,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar-inner {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 68px;
+        }
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: #5a4fcf;
+            letter-spacing: -1px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 18px;
+        }
+        .nav-menu a {
+            color: #5a4fcf;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08em;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #edeaff;
+            color: #23233b;
+        }
+        section {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 64px auto;
+            padding: 0 24px;
+        }
+        .home-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 340px;
+            margin-top: 48px;
+            margin-bottom: 64px;
+        }
+        .home-title {
+            font-size: 3.2em;
+            font-weight: 900;
+            color: #5a4fcf;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+            text-align: center;
+        }
+        .home-desc {
+            font-size: 1.25em;
+            color: #7a7ab3;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2em;
+            font-weight: 800;
+            color: #3d378a;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .overview-content, .instructor-content, .contact-content {
+            font-size: 1.13em;
+            line-height: 1.8;
+        }
+        .contents-section .chapter-box {
+            background: #f7f6fd;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(90,79,207,0.06);
+            padding: 28px 22px 18px 22px;
+            margin-bottom: 32px;
+        }
+        .contents-section .chapter-box h3 {
+            color: #5a4fcf;
+            font-size: 1.13em;
+            margin-top: 0;
+        }
+        .contents-section .chapter {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(90,79,207,0.04);
+            padding: 16px 16px 10px 16px;
+            margin-bottom: 18px;
+        }
+        .contents-section .chapter strong {
+            color: #3d378a;
+            font-size: 1.08em;
+        }
+        .contents-section .chapter ul {
+            margin-left: 18px;
+            margin-bottom: 0;
+        }
+        .contents-section .chapter ul ul {
+            margin-left: 16px;
+        }
+        .portfolio-section {
+            margin-top: 32px;
+        }
+        .portfolio-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .portfolio-card {
+            background: #f7f6fd;
+            border-radius: 12px;
+            box-shadow: 0 1px 4px rgba(90,79,207,0.06);
+            padding: 18px 18px 12px 18px;
+            min-width: 210px;
+            flex: 1 1 210px;
+        }
+        .portfolio-title {
+            font-weight: 700;
+            color: #3d378a;
+            margin-bottom: 8px;
+            font-size: 1.08em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .portfolio-card ul {
+            margin-left: 16px;
+            margin-bottom: 0;
+        }
+        .footer {
+            text-align: center;
+            color: #b0b0c7;
+            padding: 32px 0 18px 0;
+            font-size: 1em;
+            margin-top: 60px;
+        }
+        @media (max-width: 900px) {
+            .navbar-inner { flex-direction: column; align-items: flex-start; height: auto; padding: 0 8px; }
+            .nav-logo { font-size: 1.1em; }
+            .nav-menu { flex-direction: column; gap: 0; width: 100vw; }
+            .nav-menu a { padding: 10px 8px; font-size: 1em; border-radius: 6px; }
+            section { padding: 0 4px; }
+            .home-title { font-size: 2em; }
+            .section-title { font-size: 1.2em; }
+        }
+        .home-video-wrapper {
+            margin-top: 24px;
+            width: 100%;
+            max-width: 700px;
+            aspect-ratio: 16/9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home-video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(90,79,207,0.10);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 메뉴 클릭 시 active 처리 및 스크롤 이동
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            function setActive(link) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    setActive(this);
+                });
+            });
+            // 첫 메뉴 active
+            if(navLinks.length) navLinks[0].classList.add('active');
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <div class="nav-logo">임상의사결정</div>
+            <div class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#overview">Overview</a>
+                <a href="#contents">Contents</a>
+                <a href="#materials">Materials</a>
+                <a href="#instructor">Instructor</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="home-section">
+        <div class="home-title">임상의사결정</div>
+        <div class="home-desc">물리치료학과 학생을 위한 임상의사결정 수업 홈페이지</div>
+        <div class="home-video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tzvPUKiQAyQ" title="오리엔테이션 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+    <section id="overview">
+        <div class="section-title">🏠 Overview</div>
+        <div class="overview-content">
+            임상의사결정(Clinical Decision Making)은 물리치료사가 임상 현장에서 환자의 평가, 진단, 치료 및 예후 결정에 이르기까지 일련의 과정을 논리적이고 체계적으로 수행하는 능력을 의미합니다. 이 과정은 환자의 상태, 최신 근거, 임상 경험, 환자의 가치와 선호를 종합적으로 고려하여 최적의 치료 방침을 결정하는 데 중점을 둡니다.<br><br>
+            본 수업에서는 임상의사결정의 기본 개념과 원리, 실제 임상에서의 적용 방법, 그리고 근거 기반 실무(Evidence-Based Practice, EBP)의 중요성을 다룹니다. 다양한 임상 사례와 토론, 실습을 통해 학생들이 실제 상황에서 비판적 사고와 문제 해결 능력을 기를 수 있도록 설계되었습니다.<br><br>
+            임상의사결정 수업은 물리치료학과 학생들이 임상 현장에서 효과적으로 문제를 해결하고, 근거 기반의 결정을 내릴 수 있도록 돕는 것을 목표로 합니다.
+        </div>
+    </section>
+    <section id="contents" class="contents-section">
+        <div class="section-title">📚 Contents</div>
+        <div class="chapter-box">
+            <h3>제1부 임상의사결정 총론</h3>
+            <div class="chapter">
+                <strong>제1장 임상의사결정의 핵심</strong>
+                <ul>
+                    <li>1. 개요</li>
+                    <li>2. 임상의사결정의 개념</li>
+                    <li>3. 임상의사결정의 필요성</li>
+                    <li>4. 임상의사결정의 과정</li>
+                    <li>5. 임상문제해결</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제2장 임상의사결정의 5요소 6단계</strong>
+                <ul>
+                    <li>1. 임상의사결정의 5요소</li>
+                    <li>2. 임상의사결정 5요소의 임상사례</li>
+                    <li>3. 임상의사결정의 6단계</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제3장 임상의사결정을 위한 의사소통</strong>
+                <ul>
+                    <li>1. 개요</li>
+                    <li>2. 팀 구성원을 위한 의사소통</li>
+                    <li>3. 환자를 위한 의사소통</li>
+                    <li>4. 물리치료사의 윤리</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제4장 국제 기능·장애·건강 분류</strong>
+                <ul>
+                    <li>1. 장애모형과 물리치료</li>
+                    <li>2. 장애에 대한 개념</li>
+                    <li>3. ICF 개발과정</li>
+                    <li>4. ICF 구성요소</li>
+                    <li>5. ICF의 적용</li>
+                    <li>6. ICF 코드화 규칙</li>
+                    <li>7. ICF 코어셋</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제5장 임상추론 및 가설지향 알고리즘</strong>
+                <ul>
+                    <li>1. 임상추론의 개념</li>
+                    <li>2. 임상추론 과정</li>
+                    <li>3. 가설지향 알고리즘</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제6장 근거중심 물리치료</strong>
+                <ul>
+                    <li>1. 근거중심 물리치료의 정의</li>
+                    <li>2. 근거중심 물리치료 모델의 이해</li>
+                    <li>3. 근거중심 물리치료의 역사</li>
+                    <li>4. 근거중심 물리치료의 목표</li>
+                    <li>5. 근거중심 물리치료의 실행 5단계</li>
+                    <li>6. 근거수준</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제7장 문서화</strong>
+                <ul>
+                    <li>1. SOAP의 개요</li>
+                    <li>2. SOAP 노트 양식</li>
+                    <li>3. SOAP에 사용되는 의학용어</li>
+                    <li>4. SOAP 문제</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제8장 지역사회 물리치료</strong>
+                <ul>
+                    <li>1. 지역사회의 정의</li>
+                    <li>2. 지역사회 물리치료의 패러다임</li>
+                    <li>3. 지역사회 물리치료사</li>
+                    <li>4. 재가방문 물리치료제도</li>
+                    <li>5. 산업보건 물리치료</li>
+                    <li>6. 바우처 제도</li>
+                    <li>7. 낮 병원</li>
+                    <li>8. 보건소</li>
+                    <li>9. 노인 주간보호센터</li>
+                    <li>기출문제</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>의사소통 사례</strong>
+            </div>
+        </div>
+        <div class="chapter-box">
+            <h3>제2부 임상의사결정 사례</h3>
+            <div class="chapter">
+                <strong>제1장 근육뼈대계 물리치료 사례</strong>
+                <ul>
+                    <li>1. 어깨 손상
+                        <ul>
+                            <li>1) 슬랩(SLAP) 시나리오</li>
+                            <li>2) 가시위근 충돌증후군 시나리오</li>
+                            <li>3) 거북목과 둥근 어깨 시나리오</li>
+                        </ul>
+                    </li>
+                    <li>2. 무릎 손상
+                        <ul>
+                            <li>1) 무릎관절치환술(TKR) 시나리오</li>
+                            <li>2) 무릎넙다리통증 증후군 시나리오</li>
+                            <li>3) 무릎인대와 반달판 손상 시나리오</li>
+                        </ul>
+                    </li>
+                    <li>3. 척추 손상
+                        <ul>
+                            <li>1) HNP 환자 시나리오</li>
+                            <li>2) 척추옆굽음증 시나리오</li>
+                        </ul>
+                    </li>
+                    <li>4. 발목 손상
+                        <ul>
+                            <li>1) 안쪽 번짐 발목 염좌 시나리오</li>
+                            <li>2) 정강뼈 & 종아리뼈 골절 시나리오</li>
+                            <li>3) 아킬레스건 손상 시나리오</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제2장 신경계 물리치료 사례</strong>
+                <ul>
+                    <li>1. 성인 뇌질환
+                        <ul>
+                            <li>1) 뇌졸중 시나리오</li>
+                            <li>2) 외상성 뇌손상 시나리오</li>
+                            <li>3) 파킨슨병 시나리오</li>
+                        </ul>
+                    </li>
+                    <li>2. 소아 뇌질환
+                        <ul>
+                            <li>1) 영아기 발달장애 아동 시나리오</li>
+                            <li>2) 뇌성마비 학령기 아동 시나리오</li>
+                            <li>3) 뇌성마비 청소년 아동 시나리오</li>
+                        </ul>
+                    </li>
+                    <li>3. 척수 손상
+                        <ul>
+                            <li>1) 척수 손상 환자 시나리오</li>
+                            <li>2) 등뼈 손상 환자 시나리오</li>
+                            <li>3) 허리뼈 손상 시나리오</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제3장 심폐계 물리치료 사례</strong>
+                <ul>
+                    <li>1. 폐질환
+                        <ul>
+                            <li>1) 폐쇄성 폐질환 시나리오</li>
+                            <li>2) 제한성 폐질환(진폐증) 시나리오</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제4장 피부 물리치료 사례</strong>
+                <ul>
+                    <li>1) 욕창 환자 시나리오</li>
+                    <li>2) 화상 환자 시나리오</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>제5장 암 물리치료 사례</strong>
+                <ul>
+                    <li>1. 암 질환
+                        <ul>
+                            <li>1) 유방암 시나리오</li>
+                            <li>2) 유방암 시나리오</li>
+                            <li>3) 방광암 시나리오</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <strong>참고문헌</strong>
+            </div>
+            <div class="chapter">
+                <strong>찾아보기</strong>
+            </div>
+        </div>
+    </section>
+    <section id="materials">
+        <div class="section-title">📂 Materials</div>
+        <div class="overview-content">
+            수업에 필요한 강의안, 참고문헌, 실습자료 등을 다운로드할 수 있습니다.<br><br>
+            <ul>
+                <li>📄 <a href="materials/clinical_decision_lecture.pdf" download>임상의사결정 강의안(PDF)</a></li>
+                <li>📑 <a href="materials/reference_list.pdf" download>참고문헌 목록(PDF)</a></li>
+                <li>📝 <a href="materials/practice_case.docx" download>임상사례 실습자료(DOCX)</a></li>
+            </ul>
+            <div style="color:#b0b0c7; font-size:0.98em; margin-top:10px;">* 자료는 예시입니다. 실제 파일을 materials 폴더에 넣어주세요.</div>
+        </div>
+    </section>
+    <section id="instructor">
+        <div class="section-title">👨‍🏫 Instructor</div>
+        <div class="instructor-content">
+            <b>홍길동 교수</b> <br> (Department of Physical Therapy, Clinical Decision Making Instructor)<br><br>
+            <ul>
+                <li><strong>학력</strong><br>
+                    - 서울대학교 물리치료학과 학사<br>
+                    - 서울대학교 대학원 물리치료학 석사<br>
+                    - 서울대학교 대학원 재활과학 박사
+                </li>
+                <li><strong>주요 경력</strong><br>
+                    - 서울대학교병원 재활의학과 임상경력 10년<br>
+                    - 대한물리치료사협회 임상의사결정 교육위원<br>
+                    - 현) 서울대학교 물리치료학과 교수
+                </li>
+                <li><strong>연구 및 저술</strong><br>
+                    - 임상의사결정 및 근거중심 물리치료 관련 논문 다수<br>
+                    - 『임상의사결정과 근거중심 물리치료』(공저, 2022)
+                </li>
+                <li><strong>자격 및 활동</strong><br>
+                    - 물리치료사 국가자격증(대한민국)<br>
+                    - 국제 근거중심의료 워크숍 수료<br>
+                    - 국내외 학회 발표 및 워크숍 다수
+                </li>
+            </ul>
+            <div class="portfolio-section">
+                <h3 style="color:#5a4fcf; margin-bottom:12px;">📂 포트폴리오</h3>
+                <div class="portfolio-cards">
+                    <div class="portfolio-card">
+                        <div class="portfolio-title">🧑‍💻 주요 프로젝트</div>
+                        <ul>
+                            <li>근거중심 임상의사결정 지원 시스템 개발 (2021~2023)</li>
+                            <li>AI 기반 환자 맞춤형 재활 프로그램 연구</li>
+                            <li>국내외 임상 워크숍 및 세미나 주관</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-title">🎓 강의 및 교육</div>
+                        <ul>
+                            <li>임상의사결정(학부/대학원)</li>
+                            <li>근거중심 물리치료</li>
+                            <li>임상추론 및 사례기반 실습</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-title">🔬 연구 및 논문</div>
+                        <ul>
+                            <li>Clinical Reasoning in Physical Therapy (PTJ, 2022)</li>
+                            <li>Evidence-Based Practice in Rehabilitation (JCR, 2021)</li>
+                            <li>국내외 학회지 논문 20편 이상</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-title">🏆 수상 및 인증</div>
+                        <ul>
+                            <li>대한물리치료학회 우수연구상 (2022)</li>
+                            <li>서울대학교 우수강의상 (2021)</li>
+                            <li>국제재활학회 젊은연구자상 (2019)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="section-title">📬 Contact</div>
+        <div class="contact-content">
+            문의: <a href="mailto:ptclass@university.ac.kr">ptclass@university.ac.kr</a>
+        </div>
+    </section>
+    <div class="footer">
+        &copy; 2024 물리치료학과 임상의사결정 수업
+    </div>
+</body>
+</html> 
